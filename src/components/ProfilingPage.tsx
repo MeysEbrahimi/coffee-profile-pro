@@ -40,8 +40,14 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
       title: 'کدام ابزارهای دم‌آوری را دارید؟',
       type: 'checkbox',
       options: [
-        'اسپرسو ساز', 'فرنچ پرس', 'V60', 'کمکس',
-        'ایروپرس', 'موکاپات', 'کولد برو', 'سایفون'
+        { value: 'اسپرسو ساز', label: 'اسپرسو ساز' },
+        { value: 'فرنچ پرس', label: 'فرنچ پرس' },
+        { value: 'V60', label: 'V60' },
+        { value: 'کمکس', label: 'کمکس' },
+        { value: 'ایروپرس', label: 'ایروپرس' },
+        { value: 'موکاپات', label: 'موکاپات' },
+        { value: 'کولد برو', label: 'کولد برو' },
+        { value: 'سایفون', label: 'سایفون' }
       ]
     },
     {
@@ -49,8 +55,14 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
       title: 'کدام طعم‌ها را ترجیح می‌دهید؟',
       type: 'checkbox',
       options: [
-        'میوه‌ای', 'شکلاتی', 'آجیلی', 'گلی',
-        'ادویه‌ای', 'کارامل', 'وانیل', 'سیتروسی'
+        { value: 'میوه‌ای', label: 'میوه‌ای' },
+        { value: 'شکلاتی', label: 'شکلاتی' },
+        { value: 'آجیلی', label: 'آجیلی' },
+        { value: 'گلی', label: 'گلی' },
+        { value: 'ادویه‌ای', label: 'ادویه‌ای' },
+        { value: 'کارامل', label: 'کارامل' },
+        { value: 'وانیل', label: 'وانیل' },
+        { value: 'سیتروسی', label: 'سیتروسی' }
       ]
     },
     {
@@ -160,7 +172,7 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
                 onValueChange={(value) => handleRadioChange(currentQuestion.id, value)}
                 className="space-y-4"
               >
-                {currentQuestion.options.map((option: any) => (
+                {currentQuestion.options.map((option) => (
                   <div key={option.value} className="flex items-center space-x-3 space-x-reverse p-3 rounded-lg hover:bg-slate-50 transition-colors">
                     <RadioGroupItem value={option.value} id={option.value} />
                     <Label htmlFor={option.value} className="text-lg cursor-pointer flex-1">
@@ -171,15 +183,15 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
               </RadioGroup>
             ) : (
               <div className="grid grid-cols-2 gap-4">
-                {currentQuestion.options.map((option: string) => (
-                  <div key={option} className="flex items-center space-x-3 space-x-reverse p-3 rounded-lg hover:bg-slate-50 transition-colors">
+                {currentQuestion.options.map((option) => (
+                  <div key={option.value} className="flex items-center space-x-3 space-x-reverse p-3 rounded-lg hover:bg-slate-50 transition-colors">
                     <Checkbox
-                      id={option}
-                      checked={(profile[currentQuestion.id as keyof CustomerProfile] as string[]).includes(option)}
-                      onCheckedChange={(checked) => handleCheckboxChange(currentQuestion.id, option, checked as boolean)}
+                      id={option.value}
+                      checked={(profile[currentQuestion.id as keyof CustomerProfile] as string[]).includes(option.value)}
+                      onCheckedChange={(checked) => handleCheckboxChange(currentQuestion.id, option.value, checked as boolean)}
                     />
-                    <Label htmlFor={option} className="text-lg cursor-pointer flex-1">
-                      {option}
+                    <Label htmlFor={option.value} className="text-lg cursor-pointer flex-1">
+                      {option.label}
                     </Label>
                   </div>
                 ))}
