@@ -69,7 +69,8 @@ export default {
 				coffee: {
 					bean: 'hsl(var(--coffee-bean))',
 					cream: 'hsl(var(--coffee-cream))',
-					gold: 'hsl(var(--coffee-gold))',
+					caramel: 'hsl(var(--coffee-caramel))',
+					mocha: 'hsl(var(--coffee-mocha))',
 				}
 			},
 			borderRadius: {
