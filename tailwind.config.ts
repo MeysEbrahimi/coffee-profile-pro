@@ -71,6 +71,7 @@ export default {
 					cream: 'hsl(var(--coffee-cream))',
 					caramel: 'hsl(var(--coffee-caramel))',
 					mocha: 'hsl(var(--coffee-mocha))',
+					'warm-cream': 'hsl(var(--coffee-warm-cream))',
 				}
 			},
 			borderRadius: {
