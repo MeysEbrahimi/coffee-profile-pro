@@ -3,43 +3,44 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system with coffee theme colors and RTL support */
+/* Definition of the design system with soft, calming colors and RTL support */
 
 @layer base {
   :root {
-    --background: 250 248 245;
-    --foreground: 51 35 26;
+    --background: 248 250 252;
+    --foreground: 51 65 85;
 
     --card: 255 255 255;
-    --card-foreground: 51 35 26;
+    --card-foreground: 51 65 85;
 
     --popover: 255 255 255;
-    --popover-foreground: 51 35 26;
+    --popover-foreground: 51 65 85;
 
-    --primary: 101 67 33;
-    --primary-foreground: 255 248 240;
+    --primary: 100 116 139;
+    --primary-foreground: 248 250 252;
 
-    --secondary: 233 213 188;
-    --secondary-foreground: 51 35 26;
+    --secondary: 226 232 240;
+    --secondary-foreground: 51 65 85;
 
-    --muted: 245 238 227;
-    --muted-foreground: 120 113 108;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
 
-    --accent: 215 169 122;
-    --accent-foreground: 51 35 26;
+    --accent: 148 163 184;
+    --accent-foreground: 51 65 85;
 
-    --destructive: 220 38 38;
-    --destructive-foreground: 255 248 240;
+    --destructive: 239 68 68;
+    --destructive-foreground: 248 250 252;
 
-    --border: 231 221 209;
-    --input: 231 221 209;
-    --ring: 101 67 33;
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 100 116 139;
 
     --radius: 0.75rem;
 
-    --coffee-bean: 63 39 24;
-    --coffee-cream: 245 238 227;
-    --coffee-gold: 218 165 32;
+    --soft-blue: 147 197 253;
+    --soft-green: 134 239 172;
+    --soft-purple: 196 181 253;
+    --soft-pink: 251 207 232;
   }
 }
 
@@ -59,28 +60,28 @@
     text-align: right;
   }
 
-  /* Custom coffee animations */
-  @keyframes coffee-steam {
+  /* Custom gentle animations */
+  @keyframes gentle-float {
     0%, 100% {
       transform: translateY(0) rotate(0deg);
-      opacity: 0.7;
+      opacity: 0.8;
     }
     50% {
-      transform: translateY(-10px) rotate(5deg);
+      transform: translateY(-5px) rotate(2deg);
       opacity: 1;
     }
   }
 
-  .coffee-steam {
-    animation: coffee-steam 3s ease-in-out infinite;
+  .gentle-float {
+    animation: gentle-float 4s ease-in-out infinite;
   }
 
-  /* Gradient backgrounds */
-  .coffee-gradient {
-    background: linear-gradient(135deg, hsl(var(--coffee-cream)) 0%, hsl(var(--accent)) 100%);
+  /* Soft gradient backgrounds */
+  .soft-gradient {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
   }
 
-  .coffee-bean-gradient {
-    background: linear-gradient(135deg, hsl(var(--coffee-bean)) 0%, hsl(var(--primary)) 100%);
+  .card-gradient {
+    background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%);
   }
 }
