@@ -1,12 +1,66 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useState } from 'react';
+import WelcomePage from '../components/WelcomePage';
+import ProfilingPage from '../components/ProfilingPage';
+import RecommendationPage from '../components/RecommendationPage';
+
+export type CustomerProfile = {
+  experience: string;
+  brewingTools: string[];
+  flavors: string[];
+  acidity: string;
+  body: string;
+  budget: string;
+};
+
+export type CoffeeRecommendation = {
+  type: string;
+  roastLevel: string;
+  brewingMethod: string;
+  grindSize: string;
+  flavorProfile: string[];
+  characteristics: {
+    acidity: string;
+    body: string;
+  };
+  reason: string;
+  score: number;
+};
 
 const Index = () => {
+  const [currentStep, setCurrentStep] = useState<'welcome' | 'profiling' | 'recommendation'>('welcome');
+  const [customerProfile, setCustomerProfile] = useState<CustomerProfile | null>(null);
+
+  const handleStartProfiling = () => {
+    setCurrentStep('profiling');
+  };
+
+  const handleProfileComplete = (profile: CustomerProfile) => {
+    setCustomerProfile(profile);
+    setCurrentStep('recommendation');
+  };
+
+  const handleStartNew = () => {
+    setCustomerProfile(null);
+    setCurrentStep('welcome');
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen" dir="rtl">
+      {currentStep === 'welcome' && (
+        <WelcomePage onStartProfiling={handleStartProfiling} />
+      )}
+      
+      {currentStep === 'profiling' && (
+        <ProfilingPage onProfileComplete={handleProfileComplete} />
+      )}
+      
+      {currentStep === 'recommendation' && customerProfile && (
+        <RecommendationPage 
+          profile={customerProfile} 
+          onStartNew={handleStartNew}
+        />
+      )}
     </div>
   );
 };
