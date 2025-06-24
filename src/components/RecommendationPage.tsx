@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -189,29 +188,29 @@ const RecommendationPage: React.FC<RecommendationPageProps> = ({ profile, onStar
 
   const getScoreColor = (score: number) => {
     if (score >= 70) return 'bg-green-500';
-    if (score >= 50) return 'bg-yellow-500';
-    return 'bg-orange-500';
+    if (score >= 50) return 'bg-coffee-gold';
+    return 'bg-primary';
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-coffee-cream via-secondary to-muted py-8 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <Sparkles className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
+          <Sparkles className="w-16 h-16 text-coffee-gold mx-auto mb-4" />
           <h1 className="text-4xl font-bold text-gray-800 mb-2">پیشنهاد ویژه شما</h1>
           <p className="text-gray-600">بر اساس پروفایل شما، بهترین انتخاب را پیدا کردیم</p>
         </div>
 
         {/* Main Recommendation Card */}
         <Card className="shadow-2xl border-0 overflow-hidden mb-8">
-          <CardHeader className="bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 text-white text-center">
+          <CardHeader className="bg-gradient-to-r from-coffee-bean via-primary to-coffee-gold text-white text-center">
             <div className="flex items-center justify-center mb-4">
-              <Coffee className="w-12 h-12 text-yellow-200" />
+              <Coffee className="w-12 h-12 text-coffee-cream" />
             </div>
             <CardTitle className="text-3xl font-bold mb-2">{recommendation.type}</CardTitle>
             <div className="flex items-center justify-center">
-              <Star className="w-6 h-6 text-yellow-200 ml-2" />
+              <Star className="w-6 h-6 text-coffee-cream ml-2" />
               <span className="text-xl">انتخاب ویژه برای شما</span>
             </div>
           </CardHeader>
@@ -225,7 +224,7 @@ const RecommendationPage: React.FC<RecommendationPageProps> = ({ profile, onStar
                   <div className="space-y-3">
                     <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                       <span className="font-semibold">سطح رُست:</span>
-                      <Badge variant="secondary" className="bg-amber-100 text-amber-800">
+                      <Badge variant="secondary" className="bg-secondary text-primary">
                         {recommendation.roastLevel}
                       </Badge>
                     </div>
@@ -272,7 +271,7 @@ const RecommendationPage: React.FC<RecommendationPageProps> = ({ profile, onStar
                     {recommendation.flavorProfile.map((flavor, index) => (
                       <Badge
                         key={index}
-                        className="bg-gradient-to-r from-orange-400 to-yellow-400 text-white px-3 py-1 text-sm"
+                        className="bg-gradient-to-r from-coffee-gold to-primary text-white px-3 py-1 text-sm"
                       >
                         {flavor}
                       </Badge>
@@ -300,7 +299,7 @@ const RecommendationPage: React.FC<RecommendationPageProps> = ({ profile, onStar
             </div>
 
             {/* دلیل انتخاب */}
-            <div className="mt-8 p-6 bg-gradient-to-r from-amber-100 to-orange-100 rounded-lg border-r-4 border-amber-500">
+            <div className="mt-8 p-6 bg-gradient-to-r from-secondary to-muted rounded-lg border-r-4 border-primary">
               <h3 className="text-xl font-bold text-gray-800 mb-3">چرا این انتخاب؟</h3>
               <p className="text-gray-700 text-lg leading-relaxed">
                 {recommendation.reason}
@@ -315,7 +314,7 @@ const RecommendationPage: React.FC<RecommendationPageProps> = ({ profile, onStar
             onClick={onStartNew}
             size="lg"
             variant="outline"
-            className="bg-white hover:bg-gray-50 text-amber-700 border-amber-300 font-bold py-4 px-12 rounded-full text-xl shadow-lg"
+            className="bg-white hover:bg-gray-50 text-primary border-primary font-bold py-4 px-12 rounded-full text-xl shadow-lg"
           >
             <RotateCcw className="w-6 h-6 ml-2" />
             شروع پروفایل جدید

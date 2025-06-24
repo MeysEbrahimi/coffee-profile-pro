@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -59,11 +58,11 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
                      profile.body && profile.budget;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-coffee-cream to-secondary py-8 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <Coffee className="w-12 h-12 text-amber-600 mx-auto mb-4" />
+          <Coffee className="w-12 h-12 text-primary mx-auto mb-4" />
           <h1 className="text-4xl font-bold text-gray-800 mb-2">پروفایل‌سازی قهوه</h1>
           <p className="text-gray-600">لطفاً به سوالات زیر پاسخ دهید تا بهترین پیشنهاد را دریافت کنید</p>
         </div>
@@ -71,7 +70,7 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
         <div className="grid gap-6">
           {/* سطح تجربه */}
           <Card className="shadow-lg border-0">
-            <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-t-lg">
+            <CardHeader className="bg-gradient-to-r from-primary to-coffee-bean text-white rounded-t-lg">
               <CardTitle className="text-xl">سطح تجربه شما در قهوه چطور است؟</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
@@ -99,7 +98,7 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
 
           {/* ابزار دم‌آوری */}
           <Card className="shadow-lg border-0">
-            <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-t-lg">
+            <CardHeader className="bg-gradient-to-r from-primary to-coffee-bean text-white rounded-t-lg">
               <CardTitle className="text-xl">کدام ابزارهای دم‌آوری را دارید؟ (می‌توانید چندتا انتخاب کنید)</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
@@ -131,7 +130,7 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
 
           {/* طعم‌های ترجیحی */}
           <Card className="shadow-lg border-0">
-            <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-t-lg">
+            <CardHeader className="bg-gradient-to-r from-primary to-coffee-bean text-white rounded-t-lg">
               <CardTitle className="text-xl">کدام طعم‌ها را ترجیح می‌دهید؟ (می‌توانید چندتا انتخاب کنید)</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
@@ -163,7 +162,7 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
 
           {/* اسیدیته */}
           <Card className="shadow-lg border-0">
-            <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-t-lg">
+            <CardHeader className="bg-gradient-to-r from-primary to-coffee-bean text-white rounded-t-lg">
               <CardTitle className="text-xl">چه میزان اسیدیته ترجیح می‌دهید؟</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
@@ -190,7 +189,7 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
 
           {/* بادی */}
           <Card className="shadow-lg border-0">
-            <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-t-lg">
+            <CardHeader className="bg-gradient-to-r from-primary to-coffee-bean text-white rounded-t-lg">
               <CardTitle className="text-xl">چه میزان غلظت (بادی) ترجیح می‌دهید؟</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
@@ -217,7 +216,7 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
 
           {/* بودجه */}
           <Card className="shadow-lg border-0">
-            <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-t-lg">
+            <CardHeader className="bg-gradient-to-r from-primary to-coffee-bean text-white rounded-t-lg">
               <CardTitle className="text-xl">بودجه شما برای خرید قهوه چقدر است؟</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
@@ -249,7 +248,7 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
             onClick={handleSubmit}
             disabled={!isFormValid}
             size="lg"
-            className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold py-4 px-12 rounded-full text-xl shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-gradient-to-r from-coffee-bean to-primary hover:from-primary hover:to-coffee-bean text-white font-bold py-4 px-12 rounded-full text-xl shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
           >
             مشاهده پیشنهاد من
             <ArrowRight className="w-6 h-6 mr-2" />

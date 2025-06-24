@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Coffee, Leaf, Star } from 'lucide-react';
@@ -24,14 +23,14 @@ const WelcomePage: React.FC<WelcomePageProps> = ({ onStartProfiling }) => {
         <div className="relative z-10 flex flex-col justify-center items-center min-h-screen px-4 text-center">
           {/* Coffee Steam Animation */}
           <div className="mb-8">
-            <Coffee className="w-16 h-16 text-yellow-200 coffee-steam" />
+            <Coffee className="w-16 h-16 text-coffee-cream coffee-steam" />
           </div>
           
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             راهنمای شخصی
             <br />
-            <span className="text-yellow-200">قهوه شما</span>
+            <span className="text-coffee-cream">قهوه شما</span>
           </h1>
           
           {/* Subtitle */}
@@ -42,7 +41,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({ onStartProfiling }) => {
           {/* Features */}
           <div className="flex flex-wrap justify-center gap-6 mb-12">
             <div className="flex items-center text-white">
-              <Star className="w-5 h-5 text-yellow-200 ml-2" />
+              <Star className="w-5 h-5 text-coffee-cream ml-2" />
               <span>پیشنهاد شخصی‌سازی شده</span>
             </div>
             <div className="flex items-center text-white">
@@ -50,7 +49,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({ onStartProfiling }) => {
               <span>کیفیت باالا</span>
             </div>
             <div className="flex items-center text-white">
-              <Coffee className="w-5 h-5 text-yellow-200 ml-2" />
+              <Coffee className="w-5 h-5 text-coffee-cream ml-2" />
               <span>مشاوره تخصصی</span>
             </div>
           </div>
@@ -59,7 +58,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({ onStartProfiling }) => {
           <Button 
             onClick={onStartProfiling}
             size="lg"
-            className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-4 px-12 rounded-full text-xl shadow-2xl transform transition-all duration-300 hover:scale-105"
+            className="bg-gradient-to-r from-coffee-gold to-primary hover:from-coffee-bean hover:to-primary text-white font-bold py-4 px-12 rounded-full text-xl shadow-2xl transform transition-all duration-300 hover:scale-105"
           >
             شروع پروفایل‌سازی
           </Button>
