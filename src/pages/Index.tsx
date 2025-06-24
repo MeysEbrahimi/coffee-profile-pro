@@ -25,6 +25,11 @@ export type CoffeeRecommendation = {
   };
   reason: string;
   score: number;
+  salesMetrics?: {
+    monthlyUnits: number;
+    inventory: number;
+    promotionBoost: number;
+  };
 };
 
 const Index = () => {

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Coffee, Leaf, Star } from 'lucide-react';
@@ -41,7 +42,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({ onStartProfiling }) => {
           {/* Features */}
           <div className="flex flex-wrap justify-center gap-6 mb-12">
             <div className="flex items-center text-white">
-              <Star className="w-5 h-5 text-coffee-cream ml-2" />
+              <Star className="w-5 h-5 text-coffee-caramel ml-2" />
               <span>پیشنهاد شخصی‌سازی شده</span>
             </div>
             <div className="flex items-center text-white">
@@ -58,7 +59,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({ onStartProfiling }) => {
           <Button 
             onClick={onStartProfiling}
             size="lg"
-            className="bg-gradient-to-r from-coffee-gold to-primary hover:from-coffee-bean hover:to-primary text-white font-bold py-4 px-12 rounded-full text-xl shadow-2xl transform transition-all duration-300 hover:scale-105"
+            className="bg-gradient-to-r from-coffee-caramel to-primary hover:from-coffee-bean hover:to-primary text-white font-bold py-4 px-12 rounded-full text-xl shadow-2xl transform transition-all duration-300 hover:scale-105"
           >
             شروع پروفایل‌سازی
           </Button>
