@@ -6,14 +6,13 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { CustomerProfile } from '../pages/Index';
-import { ArrowRight, ArrowLeft, Coffee, CheckCircle } from 'lucide-react';
+import { ArrowRight, Coffee } from 'lucide-react';
 
 interface ProfilingPageProps {
   onProfileComplete: (profile: CustomerProfile) => void;
 }
 
 const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
-  const [currentStep, setCurrentStep] = useState(0);
   const [profile, setProfile] = useState<CustomerProfile>({
     experience: '',
     brewingTools: [],
@@ -23,211 +22,237 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
     budget: ''
   });
 
-  const questions = [
-    {
-      id: 'experience',
-      title: 'سطح تجربه شما در قهوه چطور است؟',
-      type: 'radio',
-      options: [
-        { value: 'beginner', label: 'تازه‌کار - به تازگی علاقه‌مند شده‌ام' },
-        { value: 'intermediate', label: 'متوسط - چند سال است قهوه می‌نوشم' },
-        { value: 'advanced', label: 'پیشرفته - در مورد قهوه اطلاعات زیادی دارم' },
-        { value: 'expert', label: 'متخصص - در صنعت قهوه فعالیت می‌کنم' }
-      ]
-    },
-    {
-      id: 'brewingTools',
-      title: 'کدام ابزارهای دم‌آوری را دارید؟',
-      type: 'checkbox',
-      options: [
-        { value: 'اسپرسو ساز', label: 'اسپرسو ساز' },
-        { value: 'فرنچ پرس', label: 'فرنچ پرس' },
-        { value: 'V60', label: 'V60' },
-        { value: 'کمکس', label: 'کمکس' },
-        { value: 'ایروپرس', label: 'ایروپرس' },
-        { value: 'موکاپات', label: 'موکاپات' },
-        { value: 'کولد برو', label: 'کولد برو' },
-        { value: 'سایفون', label: 'سایفون' }
-      ]
-    },
-    {
-      id: 'flavors',
-      title: 'کدام طعم‌ها را ترجیح می‌دهید؟',
-      type: 'checkbox',
-      options: [
-        { value: 'میوه‌ای', label: 'میوه‌ای' },
-        { value: 'شکلاتی', label: 'شکلاتی' },
-        { value: 'آجیلی', label: 'آجیلی' },
-        { value: 'گلی', label: 'گلی' },
-        { value: 'ادویه‌ای', label: 'ادویه‌ای' },
-        { value: 'کارامل', label: 'کارامل' },
-        { value: 'وانیل', label: 'وانیل' },
-        { value: 'سیتروسی', label: 'سیتروسی' }
-      ]
-    },
-    {
-      id: 'acidity',
-      title: 'چه میزان اسیدیته ترجیح می‌دهید؟',
-      type: 'radio',
-      options: [
-        { value: 'low', label: 'کم - طعم ملایم و نرم' },
-        { value: 'medium', label: 'متوسط - تعادل مناسب' },
-        { value: 'high', label: 'زیاد - طعم زنده و شاداب' }
-      ]
-    },
-    {
-      id: 'body',
-      title: 'چه میزان غلظت (بادی) ترجیح می‌دهید؟',
-      type: 'radio',
-      options: [
-        { value: 'light', label: 'سبک - نوشیدنی ملایم و صاف' },
-        { value: 'medium', label: 'متوسط - حس متعادل در دهان' },
-        { value: 'full', label: 'غلیظ - حس پرقدرت و کرمی' }
-      ]
-    },
-    {
-      id: 'budget',
-      title: 'بودجه شما برای خرید قهوه چقدر است؟',
-      type: 'radio',
-      options: [
-        { value: 'low', label: 'اقتصادی - زیر ۱۰۰ هزار تومان' },
-        { value: 'medium', label: 'متوسط - ۱۰۰ تا ۲۰۰ هزار تومان' },
-        { value: 'high', label: 'بالا - بیش از ۲۰۰ هزار تومان' }
-      ]
-    }
-  ];
+  const handleSubmit = () => {
+    onProfileComplete(profile);
+  };
 
-  const handleNext = () => {
-    if (currentStep < questions.length - 1) {
-      setCurrentStep(currentStep + 1);
+  const handleFlavorChange = (flavor: string, checked: boolean) => {
+    if (checked) {
+      setProfile(prev => ({
+        ...prev,
+        flavors: [...prev.flavors, flavor]
+      }));
     } else {
-      onProfileComplete(profile);
+      setProfile(prev => ({
+        ...prev,
+        flavors: prev.flavors.filter(f => f !== flavor)
+      }));
     }
   };
 
-  const handlePrevious = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
-
-  const handleRadioChange = (questionId: string, value: string) => {
-    setProfile(prev => ({ ...prev, [questionId]: value }));
-  };
-
-  const handleCheckboxChange = (questionId: string, option: string, checked: boolean) => {
-    setProfile(prev => {
-      const currentArray = prev[questionId as keyof CustomerProfile] as string[];
-      if (checked) {
-        return { ...prev, [questionId]: [...currentArray, option] };
-      } else {
-        return { ...prev, [questionId]: currentArray.filter(item => item !== option) };
-      }
-    });
-  };
-
-  const isCurrentStepValid = () => {
-    const question = questions[currentStep];
-    const value = profile[question.id as keyof CustomerProfile];
-    
-    if (question.type === 'radio') {
-      return value !== '';
+  const handleToolChange = (tool: string, checked: boolean) => {
+    if (checked) {
+      setProfile(prev => ({
+        ...prev,
+        brewingTools: [...prev.brewingTools, tool]
+      }));
     } else {
-      return Array.isArray(value) && value.length > 0;
+      setProfile(prev => ({
+        ...prev,
+        brewingTools: prev.brewingTools.filter(t => t !== tool)
+      }));
     }
   };
 
-  const currentQuestion = questions[currentStep];
-  const progress = ((currentStep + 1) / questions.length) * 100;
+  const isFormValid = profile.experience && profile.brewingTools.length > 0 && 
+                     profile.flavors.length > 0 && profile.acidity && 
+                     profile.body && profile.budget;
 
   return (
-    <div className="min-h-screen soft-gradient py-8 px-4">
-      <div className="max-w-2xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 py-8 px-4">
+      <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <Coffee className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-          <h1 className="text-3xl font-bold text-slate-700 mb-2">پروفایل‌سازی قهوه</h1>
-          <p className="text-slate-600">مرحله {currentStep + 1} از {questions.length}</p>
+          <Coffee className="w-12 h-12 text-amber-600 mx-auto mb-4" />
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">پروفایل‌سازی قهوه</h1>
+          <p className="text-gray-600">لطفاً به سوالات زیر پاسخ دهید تا بهترین پیشنهاد را دریافت کنید</p>
         </div>
 
-        {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="w-full bg-slate-200 rounded-full h-2">
-            <div 
-              className="bg-gradient-to-r from-slate-400 to-slate-500 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Question Card */}
-        <Card className="shadow-lg border-0 mb-8">
-          <CardHeader className="bg-gradient-to-r from-slate-500 to-slate-600 text-white rounded-t-lg">
-            <CardTitle className="text-xl">{currentQuestion.title}</CardTitle>
-          </CardHeader>
-          <CardContent className="p-8">
-            {currentQuestion.type === 'radio' ? (
+        <div className="grid gap-6">
+          {/* سطح تجربه */}
+          <Card className="shadow-lg border-0">
+            <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-t-lg">
+              <CardTitle className="text-xl">سطح تجربه شما در قهوه چطور است؟</CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
               <RadioGroup
-                value={profile[currentQuestion.id as keyof CustomerProfile] as string}
-                onValueChange={(value) => handleRadioChange(currentQuestion.id, value)}
-                className="space-y-4"
+                value={profile.experience}
+                onValueChange={(value) => setProfile(prev => ({ ...prev, experience: value }))}
+                className="space-y-3"
               >
-                {currentQuestion.options.map((option) => (
-                  <div key={option.value} className="flex items-center space-x-3 space-x-reverse p-3 rounded-lg hover:bg-slate-50 transition-colors">
+                {[
+                  { value: 'beginner', label: 'تازه‌کار - به تازگی علاقه‌مند شده‌ام' },
+                  { value: 'intermediate', label: 'متوسط - چند سال است قهوه می‌نوشم' },
+                  { value: 'advanced', label: 'پیشرفته - در مورد قهوه اطلاعات زیادی دارم' },
+                  { value: 'expert', label: 'متخصص - در صنعت قهوه فعالیت می‌کنم' }
+                ].map((option) => (
+                  <div key={option.value} className="flex items-center space-x-2 space-x-reverse">
                     <RadioGroupItem value={option.value} id={option.value} />
-                    <Label htmlFor={option.value} className="text-lg cursor-pointer flex-1">
+                    <Label htmlFor={option.value} className="text-lg cursor-pointer">
                       {option.label}
                     </Label>
                   </div>
                 ))}
               </RadioGroup>
-            ) : (
-              <div className="grid grid-cols-2 gap-4">
-                {currentQuestion.options.map((option) => (
-                  <div key={option.value} className="flex items-center space-x-3 space-x-reverse p-3 rounded-lg hover:bg-slate-50 transition-colors">
+            </CardContent>
+          </Card>
+
+          {/* ابزار دم‌آوری */}
+          <Card className="shadow-lg border-0">
+            <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-t-lg">
+              <CardTitle className="text-xl">کدام ابزارهای دم‌آوری را دارید؟ (می‌توانید چندتا انتخاب کنید)</CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {[
+                  'اسپرسو ساز',
+                  'فرنچ پرس',
+                  'V60',
+                  'کمکس',
+                  'ایروپرس',
+                  'موکاپات',
+                  'کولد برو',
+                  'سایفون'
+                ].map((tool) => (
+                  <div key={tool} className="flex items-center space-x-2 space-x-reverse">
                     <Checkbox
-                      id={option.value}
-                      checked={(profile[currentQuestion.id as keyof CustomerProfile] as string[]).includes(option.value)}
-                      onCheckedChange={(checked) => handleCheckboxChange(currentQuestion.id, option.value, checked as boolean)}
+                      id={tool}
+                      checked={profile.brewingTools.includes(tool)}
+                      onCheckedChange={(checked) => handleToolChange(tool, checked as boolean)}
                     />
-                    <Label htmlFor={option.value} className="text-lg cursor-pointer flex-1">
-                      {option.label}
+                    <Label htmlFor={tool} className="text-lg cursor-pointer">
+                      {tool}
                     </Label>
                   </div>
                 ))}
               </div>
-            )}
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
 
-        {/* Navigation Buttons */}
-        <div className="flex justify-between items-center">
+          {/* طعم‌های ترجیحی */}
+          <Card className="shadow-lg border-0">
+            <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-t-lg">
+              <CardTitle className="text-xl">کدام طعم‌ها را ترجیح می‌دهید؟ (می‌توانید چندتا انتخاب کنید)</CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {[
+                  'میوه‌ای',
+                  'شکلاتی',
+                  'آجیلی',
+                  'گلی',
+                  'ادویه‌ای',
+                  'کارامل',
+                  'وانیل',
+                  'سیتروسی'
+                ].map((flavor) => (
+                  <div key={flavor} className="flex items-center space-x-2 space-x-reverse">
+                    <Checkbox
+                      id={flavor}
+                      checked={profile.flavors.includes(flavor)}
+                      onCheckedChange={(checked) => handleFlavorChange(flavor, checked as boolean)}
+                    />
+                    <Label htmlFor={flavor} className="text-lg cursor-pointer">
+                      {flavor}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* اسیدیته */}
+          <Card className="shadow-lg border-0">
+            <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-t-lg">
+              <CardTitle className="text-xl">چه میزان اسیدیته ترجیح می‌دهید؟</CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
+              <RadioGroup
+                value={profile.acidity}
+                onValueChange={(value) => setProfile(prev => ({ ...prev, acidity: value }))}
+                className="space-y-3"
+              >
+                {[
+                  { value: 'low', label: 'کم - طعم ملایم و نرم' },
+                  { value: 'medium', label: 'متوسط - تعادل مناسب' },
+                  { value: 'high', label: 'زیاد - طعم زنده و شاداب' }
+                ].map((option) => (
+                  <div key={option.value} className="flex items-center space-x-2 space-x-reverse">
+                    <RadioGroupItem value={option.value} id={`acidity-${option.value}`} />
+                    <Label htmlFor={`acidity-${option.value}`} className="text-lg cursor-pointer">
+                      {option.label}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </CardContent>
+          </Card>
+
+          {/* بادی */}
+          <Card className="shadow-lg border-0">
+            <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-t-lg">
+              <CardTitle className="text-xl">چه میزان غلظت (بادی) ترجیح می‌دهید؟</CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
+              <RadioGroup
+                value={profile.body}
+                onValueChange={(value) => setProfile(prev => ({ ...prev, body: value }))}
+                className="space-y-3"
+              >
+                {[
+                  { value: 'light', label: 'سبک - نوشیدنی ملایم و صاف' },
+                  { value: 'medium', label: 'متوسط - حس متعادل در دهان' },
+                  { value: 'full', label: 'غلیظ - حس پرقدرت و کرمی' }
+                ].map((option) => (
+                  <div key={option.value} className="flex items-center space-x-2 space-x-reverse">
+                    <RadioGroupItem value={option.value} id={`body-${option.value}`} />
+                    <Label htmlFor={`body-${option.value}`} className="text-lg cursor-pointer">
+                      {option.label}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </CardContent>
+          </Card>
+
+          {/* بودجه */}
+          <Card className="shadow-lg border-0">
+            <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-t-lg">
+              <CardTitle className="text-xl">بودجه شما برای خرید قهوه چقدر است؟</CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
+              <RadioGroup
+                value={profile.budget}
+                onValueChange={(value) => setProfile(prev => ({ ...prev, budget: value }))}
+                className="space-y-3"
+              >
+                {[
+                  { value: 'low', label: 'اقتصادی - زیر ۱۰۰ هزار تومان' },
+                  { value: 'medium', label: 'متوسط - ۱۰۰ تا ۲۰۰ هزار تومان' },
+                  { value: 'high', label: 'بالا - بیش از ۲۰۰ هزار تومان' }
+                ].map((option) => (
+                  <div key={option.value} className="flex items-center space-x-2 space-x-reverse">
+                    <RadioGroupItem value={option.value} id={`budget-${option.value}`} />
+                    <Label htmlFor={`budget-${option.value}`} className="text-lg cursor-pointer">
+                      {option.label}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Submit Button */}
+        <div className="text-center mt-8">
           <Button
-            onClick={handlePrevious}
-            disabled={currentStep === 0}
-            variant="outline"
-            className="flex items-center space-x-2 space-x-reverse disabled:opacity-50"
+            onClick={handleSubmit}
+            disabled={!isFormValid}
+            size="lg"
+            className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold py-4 px-12 rounded-full text-xl shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>قبلی</span>
-          </Button>
-
-          <div className="flex items-center space-x-2 space-x-reverse">
-            {isCurrentStepValid() && (
-              <CheckCircle className="w-5 h-5 text-green-500" />
-            )}
-            <span className="text-sm text-slate-600">
-              {currentStep + 1} / {questions.length}
-            </span>
-          </div>
-
-          <Button
-            onClick={handleNext}
-            disabled={!isCurrentStepValid()}
-            className="bg-gradient-to-r from-slate-500 to-slate-600 hover:from-slate-600 hover:to-slate-700 flex items-center space-x-2 space-x-reverse disabled:opacity-50"
-          >
-            <span>{currentStep === questions.length - 1 ? 'مشاهده پیشنهاد' : 'بعدی'}</span>
-            <ArrowRight className="w-4 h-4" />
+            مشاهده پیشنهاد من
+            <ArrowRight className="w-6 h-6 mr-2" />
           </Button>
         </div>
       </div>

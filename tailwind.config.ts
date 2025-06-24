@@ -66,11 +66,10 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				soft: {
-					blue: 'hsl(var(--soft-blue))',
-					green: 'hsl(var(--soft-green))',
-					purple: 'hsl(var(--soft-purple))',
-					pink: 'hsl(var(--soft-pink))',
+				coffee: {
+					bean: 'hsl(var(--coffee-bean))',
+					cream: 'hsl(var(--coffee-cream))',
+					gold: 'hsl(var(--coffee-gold))',
 				}
 			},
 			borderRadius: {
@@ -95,13 +94,13 @@ export default {
 						height: '0'
 					}
 				},
-				'gentle-float': {
+				'coffee-steam': {
 					'0%, 100%': {
 						transform: 'translateY(0) rotate(0deg)',
-						opacity: '0.8'
+						opacity: '0.7'
 					},
 					'50%': {
-						transform: 'translateY(-5px) rotate(2deg)',
+						transform: 'translateY(-10px) rotate(5deg)',
 						opacity: '1'
 					}
 				}
@@ -109,7 +108,7 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'gentle-float': 'gentle-float 4s ease-in-out infinite'
+				'coffee-steam': 'coffee-steam 3s ease-in-out infinite'
 			}
 		}
 	},
