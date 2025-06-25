@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Coffee, Leaf, Star } from 'lucide-react';
@@ -28,7 +29,9 @@ const WelcomePage: React.FC<WelcomePageProps> = ({ onStartProfiling }) => {
           
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            پروفایل مشتری قهوه
+            راهنمای شخصی
+            <br />
+            <span className="text-coffee-cream">قهوه شما</span>
           </h1>
           
           {/* Subtitle */}

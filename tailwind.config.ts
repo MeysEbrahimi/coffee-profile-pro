@@ -1,5 +1,5 @@
+
 import type { Config } from "tailwindcss";
-import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -71,7 +71,6 @@ export default {
 					cream: 'hsl(var(--coffee-cream))',
 					caramel: 'hsl(var(--coffee-caramel))',
 					mocha: 'hsl(var(--coffee-mocha))',
-					'warm-cream': 'hsl(var(--coffee-warm-cream))',
 				}
 			},
 			borderRadius: {
@@ -114,5 +113,5 @@ export default {
 			}
 		}
 	},
-	plugins: [tailwindcssAnimate],
+	plugins: [require("tailwindcss-animate")],
 } satisfies Config;

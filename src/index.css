@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -40,7 +41,6 @@
     --coffee-cream: 245 238 227;
     --coffee-caramel: 160 82 45;
     --coffee-mocha: 139 101 75;
-    --coffee-warm-cream: 235 222 183;
   }
 }
 
