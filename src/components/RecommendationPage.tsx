@@ -225,7 +225,7 @@ const RecommendationPage: React.FC<RecommendationPageProps> = ({ profile, onStar
         {/* Header */}
         <div className="text-center mb-8">
           <Sparkles className="w-16 h-16 text-coffee-caramel mx-auto mb-4" />
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">پیشنهاد ویژه شما</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">پروفایل مشتری قهوه</h1>
           <p className="text-gray-600">بر اساس پروفایل شما، بهترین انتخاب را پیدا کردیم</p>
         </div>
 
