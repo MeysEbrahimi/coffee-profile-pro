@@ -16,7 +16,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({ onStartProfiling }) => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `linear-gradient(rgba(63, 39, 24, 0.4), rgba(101, 67, 33, 0.6)), url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80')`
+            backgroundImage: `linear-gradient(rgba(63, 39, 24, 0.4), rgba(101, 67, 33, 0.6)), url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80')`
           }}
         />
         
@@ -47,7 +47,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({ onStartProfiling }) => {
             </div>
             <div className="flex items-center text-white">
               <Leaf className="w-5 h-5 text-green-200 ml-2" />
-              <span>کیفیت باالا</span>
+              <span>کیفیت بالا</span>
             </div>
             <div className="flex items-center text-white">
               <Coffee className="w-5 h-5 text-coffee-cream ml-2" />
