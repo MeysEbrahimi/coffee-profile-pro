@@ -204,13 +204,13 @@ const RecommendationPage: React.FC<RecommendationPageProps> = ({ profile, onStar
 
   const getScoreColor = (score: number) => {
     if (score >= 70) return 'bg-green-500';
-    if (score >= 50) return 'bg-yellow-500';
+    if (score >= 50) return 'bg-white';
     return 'bg-blue-500';
   };
 
   const getSalesStatus = (monthlyUnits: number) => {
     if (monthlyUnits < 10) return { label: 'کم‌فروش', color: 'bg-red-100 text-red-800' };
-    if (monthlyUnits < 20) return { label: 'متوسط', color: 'bg-yellow-100 text-yellow-800' };
+    if (monthlyUnits < 20) return { label: 'متوسط', color: 'bg-white text-gray-800' };
     return { label: 'پرفروش', color: 'bg-green-100 text-green-800' };
   };
 
@@ -238,7 +238,7 @@ const RecommendationPage: React.FC<RecommendationPageProps> = ({ profile, onStar
             </div>
             <CardTitle className="text-3xl font-bold mb-2">{recommendation.type}</CardTitle>
             <div className="flex items-center justify-center">
-              <Star className="w-6 h-6 text-yellow-300 ml-2" />
+              <Star className="w-6 h-6 text-white ml-2" />
               <span className="text-xl">انتخاب ویژه برای شما</span>
             </div>
             
@@ -269,19 +269,19 @@ const RecommendationPage: React.FC<RecommendationPageProps> = ({ profile, onStar
                 <div>
                   <h3 className="text-xl font-bold text-slate-800 mb-4">مشخصات کلی</h3>
                   <div className="space-y-3">
-                    <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+                    <div className="flex justify-between items-center p-3 rounded-lg" style={{ backgroundColor: '#fefdfb' }}>
                       <span className="font-semibold">سطح رُست:</span>
                       <Badge variant="secondary" className="bg-amber-100 text-amber-800">
                         {recommendation.roastLevel}
                       </Badge>
                     </div>
-                    <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+                    <div className="flex justify-between items-center p-3 rounded-lg" style={{ backgroundColor: '#fefdfb' }}>
                       <span className="font-semibold">روش دم‌آوری:</span>
                       <Badge variant="secondary" className="bg-blue-100 text-blue-800">
                         {recommendation.brewingMethod}
                       </Badge>
                     </div>
-                    <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+                    <div className="flex justify-between items-center p-3 rounded-lg" style={{ backgroundColor: '#fefdfb' }}>
                       <span className="font-semibold">درجه آسیاب:</span>
                       <Badge variant="secondary" className="bg-green-100 text-green-800">
                         {recommendation.grindSize}
@@ -294,13 +294,13 @@ const RecommendationPage: React.FC<RecommendationPageProps> = ({ profile, onStar
                 <div>
                   <h3 className="text-xl font-bold text-slate-800 mb-4">خصوصیات حسی</h3>
                   <div className="space-y-3">
-                    <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+                    <div className="flex justify-between items-center p-3 rounded-lg" style={{ backgroundColor: '#fefdfb' }}>
                       <span className="font-semibold">اسیدیته:</span>
                       <Badge variant="outline" className="border-purple-200 text-purple-800">
                         {getAcidityLabel(recommendation.characteristics.acidity)}
                       </Badge>
                     </div>
-                    <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+                    <div className="flex justify-between items-center p-3 rounded-lg" style={{ backgroundColor: '#fefdfb' }}>
                       <span className="font-semibold">بادی:</span>
                       <Badge variant="outline" className="border-purple-200 text-purple-800">
                         {getBodyLabel(recommendation.characteristics.body)}
