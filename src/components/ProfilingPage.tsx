@@ -63,7 +63,7 @@ const ProfilingPage: React.FC<ProfilingPageProps> = ({ onProfileComplete }) => {
         {/* Header */}
         <div className="text-center mb-8">
           <Coffee className="w-12 h-12 text-primary mx-auto mb-4" />
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">پروفایل‌سازی قهوه</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">پروفایل مشتری قهوه</h1>
           <p className="text-gray-600">لطفاً به سوالات زیر پاسخ دهید تا بهترین پیشنهاد را دریافت کنید</p>
         </div>
 
