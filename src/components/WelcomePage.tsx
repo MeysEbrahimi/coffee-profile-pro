@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Coffee, Leaf, Star } from 'lucide-react';
@@ -44,7 +43,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({ onStartProfiling }) => {
               <span>پیشنهاد شخصی‌سازی شده</span>
             </div>
             <div className="flex items-center text-white">
-              <Leaf className="w-5 h-5" style={{ color: '#ebdeb7' }} />
+              <Leaf className="w-5 h-5 text-green-200 ml-2" />
               <span>کیفیت باالا</span>
             </div>
             <div className="flex items-center text-white">

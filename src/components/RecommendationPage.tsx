@@ -237,7 +237,7 @@ const RecommendationPage: React.FC<RecommendationPageProps> = ({ profile, onStar
             </div>
             <CardTitle className="text-3xl font-bold mb-2">{recommendation.type}</CardTitle>
             <div className="flex items-center justify-center">
-              <Star className="w-6 h-6" style={{ color: '#ebdeb7' }} />
+              <Star className="w-6 h-6 text-coffee-warm-cream ml-2" />
               <span className="text-xl">انتخاب ویژه برای شما</span>
             </div>
             
