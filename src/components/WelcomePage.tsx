@@ -28,9 +28,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({ onStartProfiling }) => {
           
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            راهنمای شخصی
-            <br />
-            <span className="text-coffee-cream">قهوه شما</span>
+            پروفایل مشتری قهوه
           </h1>
           
           {/* Subtitle */}
