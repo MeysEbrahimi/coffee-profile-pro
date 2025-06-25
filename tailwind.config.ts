@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 
@@ -72,6 +73,7 @@ export default {
 					caramel: 'hsl(var(--coffee-caramel))',
 					mocha: 'hsl(var(--coffee-mocha))',
 					'warm-cream': 'hsl(var(--coffee-warm-cream))',
+					'light-cream': '#ebdeb7',
 				}
 			},
 			borderRadius: {
