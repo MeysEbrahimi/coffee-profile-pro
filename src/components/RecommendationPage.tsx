@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -203,13 +204,13 @@ const RecommendationPage: React.FC<RecommendationPageProps> = ({ profile, onStar
 
   const getScoreColor = (score: number) => {
     if (score >= 70) return 'bg-green-500';
-    if (score >= 50) return 'bg-coffee-caramel';
+    if (score >= 50) return 'bg-yellow-500';
     return 'bg-blue-500';
   };
 
   const getSalesStatus = (monthlyUnits: number) => {
     if (monthlyUnits < 10) return { label: 'کم‌فروش', color: 'bg-red-100 text-red-800' };
-    if (monthlyUnits < 20) return { label: 'متوسط', color: 'bg-coffee-mocha bg-opacity-20 text-coffee-bean' };
+    if (monthlyUnits < 20) return { label: 'متوسط', color: 'bg-yellow-100 text-yellow-800' };
     return { label: 'پرفروش', color: 'bg-green-100 text-green-800' };
   };
 
@@ -270,7 +271,7 @@ const RecommendationPage: React.FC<RecommendationPageProps> = ({ profile, onStar
                   <div className="space-y-3">
                     <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
                       <span className="font-semibold">سطح رُست:</span>
-                      <Badge variant="secondary" className="bg-coffee-caramel bg-opacity-20 text-coffee-bean">
+                      <Badge variant="secondary" className="bg-amber-100 text-amber-800">
                         {recommendation.roastLevel}
                       </Badge>
                     </div>
